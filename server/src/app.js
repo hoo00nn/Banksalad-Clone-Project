@@ -5,9 +5,10 @@ const logger = require('morgan');
 require('dotenv').config();
 
 const app = express();
-const apiRouter = require('./routes/api');
+const { sequelize } = require('./models/index');
 
 const { PORT } = process.env;
+const apiRouter = require('./routes/api');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -17,6 +18,9 @@ app.use(express.static(path.join(__dirname, '../../client/src')));
 
 app.use('/api', apiRouter);
 
-app.listen(PORT);
+sequelize
+  .sync({ force: false })
+  .then(() => app.listen(PORT))
+  .catch((err) => console.log(err));
 
 module.exports = app;

@@ -1,6 +1,6 @@
 const Transaction = require('../models/transaction');
 
-const transactionMiddlewares = {
+const middlewares = {
   insert: async (req, res) => {
     const options = req.body;
     const isInserted = await Transaction.insertTransaction(options);
@@ -36,6 +36,4 @@ const transactionMiddlewares = {
   },
 };
 
-module.exports = {
-  transactionMiddlewares,
-};
+module.exports = middlewares;

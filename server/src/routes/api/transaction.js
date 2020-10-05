@@ -1,12 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
-const { APIAuth } = require('../../middlewares/auth');
-const { transactionMiddlewares } = require('../../middlewares/transaction');
+const { apiAuth } = require('../../middlewares/auth');
+const transaction = require('../../middlewares/transaction');
 
-router.get('/', APIAuth, transactionMiddlewares.getTransactionsByOption);
-router.post('/', APIAuth, transactionMiddlewares.insert);
-router.put('/', APIAuth, transactionMiddlewares.update);
-router.delete('/', APIAuth, transactionMiddlewares.delete);
+router.get('/', apiAuth, transaction.getTransactionsByOption);
+router.post('/', apiAuth, transaction.insert);
+router.put('/', apiAuth, transaction.update);
+router.delete('/', apiAuth, transaction.delete);
 
 module.exports = router;

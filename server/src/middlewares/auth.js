@@ -7,7 +7,7 @@ const loginAuth = async (req, res, next) => {
     passport.authenticate('local', (error, user, { message } = '') => {
       if (error || !user) return res.status(400).json({ message });
 
-      const payload = { id: user.user_id };
+      const payload = { no: user.no, id: user.user_id };
       const generateJWTToken = jwt.sign(payload, process.env.JWT_SECRET_KEY);
 
       return res.json({ JWT: generateJWTToken });
@@ -20,9 +20,11 @@ const loginAuth = async (req, res, next) => {
 const APIAuth = async (req, res, next) => {
   try {
     passport.authenticate('jwt', { session: false }, (error, user, message) => {
-      if (error || !user) return res.status(400).json({ message });
-      return res.json({ result: 'success' });
-    })(req, res);
+      if (error || !user) res.status(400).json({ message });
+
+      req.body.user_no = user.no;
+      next();
+    })(req, res, next);
   } catch (error) {
     next(error);
   }

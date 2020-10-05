@@ -1,4 +1,4 @@
-const { DataTypes, Model } = require('sequelize');
+const { DataTypes, Model, Op } = require('sequelize');
 
 class Transaction extends Model {
   static initialize(sequelize) {
@@ -47,6 +47,54 @@ class Transaction extends Model {
         sequelize,
       },
     );
+  }
+
+  static async insertTransaction(options) {
+    const transaction = await this.create(options);
+    return transaction;
+  }
+
+  static async updateTransaction(options, target) {
+    const transaction = await this.update(options, { where: target });
+    return transaction;
+  }
+
+  static async deleteTransaction(target) {
+    const transaction = await this.destroy({ where: target });
+    return transaction;
+  }
+
+  static async getTransactionsByOption(options) {
+    const where = this.parseOptions(options);
+    const transactions = await this.findAll({
+      attributes: [
+        'no',
+        'type',
+        'category',
+        'price',
+        'content',
+        'payment_type',
+        'user_no',
+        'date',
+      ],
+      where,
+      raw: true,
+    });
+    return transactions;
+  }
+
+  static parseOptions(options) {
+    const where = {};
+    const { type, date } = options;
+    if (type) where.type = this.parseOption('eq', type);
+    if (date) where.date = this.parseOption('eq', date);
+    return where;
+  }
+
+  static parseOption(operator, value) {
+    return {
+      [Op[`${operator}`]]: value,
+    };
   }
 }
 

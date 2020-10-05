@@ -69,17 +69,19 @@ class Transaction extends Model {
     const transactions = await this.findAll({
       attributes: [
         'no',
-        'type',
-        'category',
+        this.useCustomFunction('getTitleByCode', 'type', 'type'),
+        this.useCustomFunction('getTitleByCode', 'category', 'category'),
         'price',
         'content',
-        'payment_type',
+        this.useCustomFunction('getTitleByCode', 'payment_type', 'payment_type'),
         'user_no',
         'date',
       ],
       where,
+      order: [['date', 'DESC']],
       raw: true,
     });
+
     return transactions;
   }
 
@@ -87,7 +89,7 @@ class Transaction extends Model {
     const where = {};
     const { type, date } = options;
     if (type) where.type = this.parseOption('eq', type);
-    if (date) where.date = this.parseOption('eq', date);
+    if (date) where.date = this.parseOption('like', `${date}%`);
     return where;
   }
 
@@ -95,6 +97,10 @@ class Transaction extends Model {
     return {
       [Op[`${operator}`]]: value,
     };
+  }
+
+  static useCustomFunction(funcName, colName, alias) {
+    return [this.sequelize.fn(funcName, this.sequelize.col(colName)), alias];
   }
 }
 

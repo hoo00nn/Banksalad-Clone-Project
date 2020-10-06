@@ -10,7 +10,7 @@ const loginAuth = async (req, res, next) => {
       const payload = { no: user.no, id: user.user_id };
       const generateJWTToken = jwt.sign(payload, process.env.JWT_SECRET_KEY);
 
-      return res.json({ JWT: generateJWTToken });
+      return res.state(200).json({ JWT: generateJWTToken });
     })(req, res);
   } catch (err) {
     next(err);

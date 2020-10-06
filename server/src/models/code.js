@@ -26,6 +26,14 @@ class Code extends Model {
       },
     );
   }
+
+  static async getCodeList(code) {
+    const codeList = await this.findAll({
+      attributes: ['no', ['code_nm', 'title'], 'parent'],
+      where: { parent: code },
+    });
+    return codeList;
+  }
 }
 
 module.exports = Code;

@@ -19,7 +19,7 @@ const loginAuth = async (req, res, next) => {
 
 const apiAuth = async (req, res, next) => {
   try {
-    passport.authenticate('jwt', { session: false }, (error, user, message) => {
+    passport.authenticate('jwt', { session: false }, (error, user, { message } = '') => {
       if (error || !user) res.status(400).json({ message });
 
       req.body.user_no = user.no;

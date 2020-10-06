@@ -95,7 +95,7 @@ class Transaction extends Model {
 
   static parseOption(operator, value) {
     return {
-      [Op[`${operator}`]]: value,
+      [Op[operator]]: value,
     };
   }
 

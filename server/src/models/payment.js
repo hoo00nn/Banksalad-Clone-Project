@@ -9,7 +9,7 @@ class Payment extends Model {
           allowNull: false,
           primaryKey: true,
         },
-        payment_tpye: {
+        payment_type: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
@@ -22,6 +22,11 @@ class Payment extends Model {
         sequelize,
       },
     );
+  }
+
+  static async insertPayment(options) {
+    const payment = await this.create(options);
+    return payment;
   }
 }
 

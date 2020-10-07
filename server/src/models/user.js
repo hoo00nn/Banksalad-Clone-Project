@@ -40,6 +40,17 @@ class User extends Model {
       onDelete: 'cascade',
     });
   }
+
+  static async insertUser(options) {
+    const [user, isCreated] = await this.findOrCreate({
+      where: { user_id: options.username },
+      defaults: {
+        user_id: options.username,
+        password: options.password,
+      },
+    });
+    return isCreated;
+  }
 }
 
 module.exports = User;

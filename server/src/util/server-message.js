@@ -6,6 +6,7 @@ const errorMessage = {
   failedUpdate: `데이터 업데이트에 실패하였습니다.`,
   faildDelete: `데이터 삭제에 실패하였습니다.`,
   failSelect: `데이터를 정상적으로 가져오는데 실패하였습니다.`,
+  duplicatedUser: `이미 존재하는 아이디 입니다.`,
 };
 
 const succeedMessage = {
@@ -13,6 +14,7 @@ const succeedMessage = {
   succeedUpdate: `데이터 업데이트가 정상적으로 완료되었습니다.`,
   succeedDelete: `데이터 삭제가 정상적으로 완료되었습니다.`,
   succeedSelect: `데이터를 정상적으로 가져오는데 성공하였습니다.`,
+  registerdUser: `사용자가 정상적으로 등록되었습니다.`,
 };
 
 module.exports = {

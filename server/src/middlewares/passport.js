@@ -2,8 +2,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const JWTStrategy = require('passport-jwt').Strategy;
 const { ExtractJwt } = require('passport-jwt');
-const User = require('../models/user');
 const { errorMessage } = require('../util/server-message');
+const { isComparedPassword } = require('../util/bcrypt');
+const User = require('../models/user');
 require('dotenv').config('../.env');
 
 const passportConfig = { usernameField: 'username', passwordField: 'password' };
@@ -12,10 +13,8 @@ const passportAuth = async (username, password, done) => {
   try {
     const user = await User.findOne({ where: { user_id: username } });
 
-    if (!user) {
-      return done(null, false, { message: errorMessage.invalidUser });
-    }
-    if (password === user.password) return done(null, user);
+    if (!user) return done(null, false, { message: errorMessage.invalidUser });
+    if (isComparedPassword(password, user.password)) return done(null, user);
 
     return done(null, false, { message: errorMessage.invalidPassword });
   } catch (err) {

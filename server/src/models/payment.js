@@ -10,7 +10,7 @@ class Payment extends Model {
           primaryKey: true,
         },
         payment_type: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.STRING,
           allowNull: false,
         },
       },
@@ -27,6 +27,11 @@ class Payment extends Model {
   static async insertPayment(options) {
     const payment = await this.create(options);
     return payment;
+  }
+
+  static async selectPaymentByUser(options) {
+    const payments = await this.findAll(options);
+    return payments;
   }
 }
 

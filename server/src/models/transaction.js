@@ -69,13 +69,13 @@ class Transaction extends Model {
     const transactions = await this.findAll({
       attributes: [
         'no',
-        this.useCustomFunction('getTitleByCode', 'type', 'type'),
-        this.useCustomFunction('getTitleByCode', 'category', 'category'),
-        'price',
+        [this.sequelize.fn('getTitleByCode', this.sequelize.col('type')), 'type'],
+        [this.sequelize.fn('getTitleByCode', this.sequelize.col('category')), 'category'],
+        [this.sequelize.fn('format', this.sequelize.col('price'), '0'), 'price'],
         'content',
         ['payment_type', 'payment'],
         'user_no',
-        'date',
+        [this.sequelize.fn('date_format', this.sequelize.col('date'), '%Y-%m-%d'), 'date'],
       ],
       where,
       order: [['date', 'DESC']],
@@ -97,10 +97,6 @@ class Transaction extends Model {
     return {
       [Op[operator]]: value,
     };
-  }
-
-  static useCustomFunction(funcName, colName, alias) {
-    return [this.sequelize.fn(funcName, this.sequelize.col(colName)), alias];
   }
 }
 

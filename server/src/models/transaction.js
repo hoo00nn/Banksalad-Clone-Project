@@ -73,7 +73,7 @@ class Transaction extends Model {
         this.useCustomFunction('getTitleByCode', 'category', 'category'),
         'price',
         'content',
-        this.useCustomFunction('getTitleByCode', 'payment_type', 'payment_type'),
+        ['payment_type', 'payment'],
         'user_no',
         'date',
       ],

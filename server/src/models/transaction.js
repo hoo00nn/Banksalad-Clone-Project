@@ -27,7 +27,7 @@ class Transaction extends Model {
           allowNull: false,
         },
         payment_type: {
-          type: DataTypes.INTEGER,
+          type: DataTypes.STRING,
           allowNull: false,
         },
         user_no: {

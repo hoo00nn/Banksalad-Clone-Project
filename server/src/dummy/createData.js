@@ -2,19 +2,20 @@ const fs = require('fs');
 
 class DummyData {
   getRandomDate() {
-    const [monthLength, dayLength, year] = [13, 30, '2020'];
-    let month = Math.floor(Math.random() * monthLength);
+    const [monthLength, year] = [12, '2020'];
+    let month = Math.ceil(Math.random() * monthLength);
+    const dayLength = month === 2 ? 28 : 30;
     let day = Math.ceil(Math.random() * dayLength);
 
     month = this.padNumber(month);
     day = this.padNumber(day);
 
-    return `${year}-${month}-${day}`;
+    return `${year}-${month}-${day} 00:00:00`;
   }
 
   getRandomType() {
     const randomTypeCode = Math.ceil(Math.random() * 2) + 20000;
-    return randomTypeCode === 20001 ? '수입' : '지출';
+    return randomTypeCode === 20001 ? { type: '수입', code: 20001 } : { type: '지출', code: 20002 };
   }
 
   getRandomCategory(type) {
@@ -58,13 +59,13 @@ class DummyData {
 
   getOptions() {
     const type = this.getRandomType();
-    const category = this.getRandomCategory(type);
+    const category = this.getRandomCategory(type.type);
     const price = this.getRandomPrice();
     const payment = this.getRandomPayment();
     const user = 1;
     const date = this.getRandomDate();
 
-    return [type, category, price, payment, user, date];
+    return [type.code, category, price, payment, user, date];
   }
 
   getDummyData() {

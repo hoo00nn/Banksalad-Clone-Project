@@ -5,6 +5,8 @@
 ## Project Structure
 
 - server
+
+```json
   📦server
   ┣ 📂config
   ┃ ┗ 📜config.js
@@ -42,6 +44,7 @@
   ┣ 📜.prettierrc
   ┣ 📜package-lock.json
   ┗ 📜package.json
+```
 
 ## 📄 API 명세
 

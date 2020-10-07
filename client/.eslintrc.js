@@ -12,5 +12,6 @@ module.exports = {
     'no-console': 0,
     'no-restricted-syntax': 0,
     newIsCap: false,
+    'class-methods-use-this': enable,
   },
 };

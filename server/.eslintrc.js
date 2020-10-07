@@ -1,3 +1,5 @@
+const { enable } = require('debug');
+
 module.exports = {
   env: {
     browser: true,
@@ -11,5 +13,6 @@ module.exports = {
     'no-unused-vars': 0,
     'no-console': 0,
     'no-restricted-syntax': 0,
+    'class-methods-use-this': enable,
   },
 };

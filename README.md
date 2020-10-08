@@ -46,6 +46,32 @@
   ┗ 📜package.json
 ```
 
+## Demo
+
+## DB Scheme
+
+![image](https://user-images.githubusercontent.com/52775389/95408155-d4b05f80-0959-11eb-9199-57cdd64928b7.png)
+
+## Install
+
+```bash
+cd server
+npm install
+```
+
+### Webpack Build
+
+```bash
+
+```
+
+### Start
+
+```bash
+cd server
+npm start
+```
+
 ## 📄 API 명세
 
 ### transaction

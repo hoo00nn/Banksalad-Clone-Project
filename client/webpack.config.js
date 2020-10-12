@@ -21,10 +21,10 @@ module.exports = {
     alias: {
       '@templates': path.join(__dirname, 'src/templates'),
       '@lib': path.join(__dirname, 'src/lib'),
-      '@components': path.join(__dirname, 'src/components'),
       '@api': path.join(__dirname, 'src/api'),
       '@views': path.join(__dirname, 'src/views'),
       '@styles': path.join(__dirname, 'src/scss'),
+      '@events': path.join(__dirname, 'src/events'),
     },
   },
   module: {

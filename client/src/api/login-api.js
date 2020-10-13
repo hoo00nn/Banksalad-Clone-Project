@@ -1,4 +1,5 @@
 import config from '@lib/axios-config';
+import { setToken } from '@lib/token';
 import axios from 'axios';
 
 export const loginAuth = async (loginInfo) => {
@@ -6,7 +7,7 @@ export const loginAuth = async (loginInfo) => {
     const { status, data } = await axios.post('/api/login', loginInfo, config);
 
     if (status === 200) {
-      localStorage.setItem('authorization', data.JWT);
+      setToken(data.JWT);
       return data;
     }
   } catch (err) {

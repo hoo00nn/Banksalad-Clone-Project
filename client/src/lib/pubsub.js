@@ -1,6 +1,7 @@
 class PubSub {
-  constructor() {
+  constructor(state) {
     this.events = {};
+    this.state = state;
   }
 
   subscribe(event, fn) {
@@ -15,6 +16,12 @@ class PubSub {
   publish(event, data) {
     if (!this.events.hasOwnProperty(event)) return [];
     return self.events[event].map((fn) => fn(data));
+  }
+
+  setState(action) {
+    const { type, payload } = action;
+    this.state = Object.assign({}, this.state, payload);
+    this.publish(type, payload);
   }
 }
 

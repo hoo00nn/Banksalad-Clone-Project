@@ -17,8 +17,8 @@ body {
 
   & > .header {
     text-align: center;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: $semi-large--font;
+    font-weight: $semi-bold--font-weight;
   }
 
   & > .content {
@@ -41,7 +41,7 @@ body {
         outline: none;
         color: #434444;
         background: #f3fdfa;
-        border-color: $bright-green;
+        border-color: $bright-green--color;
       }
     }
   }

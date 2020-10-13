@@ -1,0 +1,61 @@
+@import '../common/variables.scss';
+
+.account-book__container {
+  & > .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: $green--color;
+    color: $white--color;
+
+    & > .header-title {
+      font-size: $large--font;
+      font-weight: 800;
+    }
+
+    & > .header-option {
+      font-size: $regular--font;
+      font-weight: $semi-bold--font-weight;
+      line-height: 1.5;
+
+      & > span {
+        padding: 0 7px;
+      }
+    }
+  }
+
+  & > .main {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+
+    & > .month-picker {
+      font-size: $large--font;
+      font-weight: $semi-bold--font-weight;
+    }
+
+    & > .option-tab {
+      display: flex;
+      width: 100%;
+      margin-top: 20px;
+      color: $white--color;
+      background-color: $bright-green--color;
+      font-weight: $semi-bold--font-weight;
+      border-radius: 5px;
+
+      & > .option {
+        flex: 1 0 0;
+        text-align: center;
+        padding: 15px;
+        border-right: 1px solid $white--color;
+
+        &:hover {
+          background-color: $green--color;
+        }
+      }
+    }
+  }
+}

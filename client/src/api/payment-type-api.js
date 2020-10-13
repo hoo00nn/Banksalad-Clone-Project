@@ -5,7 +5,7 @@ export const getPayments = async () => {
   try {
     const { status, data } = await axios.get('/api/payment', config);
 
-    if (status === 200) return data;
+    if (status === 200) return data.data;
   } catch (err) {
     const { data } = err.response;
     alert(data.message);

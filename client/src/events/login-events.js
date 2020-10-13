@@ -11,10 +11,10 @@ class LoginEvent {
   }
 
   clickEvent(e) {
-    if (e.target.closest('.signin')) this.loginEvnetHandler(e);
+    if (e.target.closest('.signin')) this.onclickEventHandler(e);
   }
 
-  async loginEvnetHandler(e) {
+  async onclickEventHandler(e) {
     const username = $('#username', e.currentTarget).value;
     const password = $('#password', e.currentTarget).value;
 

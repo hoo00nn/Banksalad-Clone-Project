@@ -1,0 +1,26 @@
+@import '@styles/common/variables.scss';
+
+.account-book__container {
+  & > .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+    background-color: $green--color;
+    color: $white--color;
+
+    & > .header-title {
+      font-size: $large--font;
+      font-weight: 800;
+    }
+
+    & > .header-option {
+      font-size: $regular--font;
+      font-weight: $semi-bold--font-weight;
+      line-height: 1.5;
+
+      & > span {
+        padding: 0 7px;
+      }
+    }
+  }
+}

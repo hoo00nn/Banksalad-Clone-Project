@@ -25,6 +25,8 @@ module.exports = {
       '@views': path.join(__dirname, 'src/views'),
       '@styles': path.join(__dirname, 'src/scss'),
       '@events': path.join(__dirname, 'src/events'),
+      '@store': path.join(__dirname, 'src/store'),
+      '@models': path.join(__dirname, 'src/models'),
     },
   },
   module: {

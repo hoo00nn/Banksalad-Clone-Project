@@ -1,0 +1,29 @@
+@import '@styles/common/variables.scss';
+
+.account-book__container .main {
+  & > .option-tab {
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    color: $white--color;
+    background-color: $bright-green--color;
+    font-weight: $semi-bold--font-weight;
+    border-radius: 5px;
+
+    & > .option {
+      flex: 1 0 0;
+      text-align: center;
+      padding: 15px;
+      border-right: 1px solid $white--color;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $green--color;
+      }
+    }
+
+    & > .option.selected {
+      background-color: $green--color;
+    }
+  }
+}

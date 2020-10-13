@@ -1,0 +1,8 @@
+@import '../common/variables.scss';
+
+%button {
+  background-color: $green;
+  color: $white;
+  border: none;
+  text-align: center;
+}

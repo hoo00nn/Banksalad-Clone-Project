@@ -17,8 +17,8 @@ class AccountMonthPickerEvent {
     const { monthPicker } = this.model.getState();
     let month = parseInt(monthPicker.month);
     let year = parseInt(monthPicker.year);
-    month = monthPicker.month === 1 ? 12 : monthPicker.month - 1;
-    year = monthPicker.month === 1 ? monthPicker.year - 1 : monthPicker.year;
+    month = month === 1 ? 12 : month - 1;
+    year = month === 1 ? year - 1 : year;
 
     monthPicker.month = this.padNumber(month);
     monthPicker.year = year.toString();
@@ -29,8 +29,8 @@ class AccountMonthPickerEvent {
     const { monthPicker } = this.model.getState();
     let month = parseInt(monthPicker.month);
     let year = parseInt(monthPicker.year);
-    month = monthPicker.month === 12 ? 1 : monthPicker.month + 1;
-    year = monthPicker.month === 12 ? monthPicker.year + 1 : monthPicker.year;
+    month = month === 12 ? 1 : month + 1;
+    year = month === 12 ? year + 1 : year;
 
     monthPicker.month = this.padNumber(month);
     monthPicker.year = year.toString();

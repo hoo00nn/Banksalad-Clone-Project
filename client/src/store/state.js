@@ -1,8 +1,8 @@
 const initState = () => {
   let store = {
     monthPicker: {
-      month: new Date().getMonth() + 1,
-      year: new Date().getFullYear(),
+      month: (new Date().getMonth() + 1).toString(),
+      year: new Date().getFullYear().toString(),
     },
 
     accountTab: {

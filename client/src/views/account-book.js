@@ -20,16 +20,16 @@ class AccountBook {
     this.list.model.subscribe('stateChange', this.render.bind(this));
   }
 
-  render() {
+  async render() {
     document.body.appendChild(this.element);
     this.element.innerHTML = `
     <div class="account-book__container">
-      ${this.header.render()}
+      ${await this.header.render()}
       <section class="main">
-        ${this.monthPicker.render()}
-        ${this.tab.render()}
-        ${this.inputForm.render()}
-        ${this.list.render()}
+        ${await this.monthPicker.render()}
+        ${await this.tab.render()}
+        ${await this.inputForm.render()}
+        ${await this.list.render()}
       </section>
     </div>
     `;

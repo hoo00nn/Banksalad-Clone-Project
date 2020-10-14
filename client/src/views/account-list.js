@@ -9,7 +9,8 @@ class AccountListView {
     this.onEvent();
   }
 
-  render() {
+  async render() {
+    await this.model.initState();
     return getTemplate(this.model.getState());
   }
 

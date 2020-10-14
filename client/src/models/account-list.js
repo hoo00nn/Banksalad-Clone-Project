@@ -9,7 +9,6 @@ class AccountListModel extends PubSub {
   constructor(rootElement) {
     super();
     this.element = rootElement;
-    this.initState();
   }
 
   async initState() {
@@ -35,7 +34,6 @@ class AccountListModel extends PubSub {
     accountList.totalExpense = this.parseToString(totalExpense);
 
     setAccountList(state, { accountList });
-    this.publish('stateChange', this.getState());
   }
 
   parseToInt(price) {

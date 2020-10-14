@@ -15,22 +15,31 @@ class AccountMonthPickerEvent {
 
   onclickPreviousButton() {
     const { monthPicker } = this.model.getState();
-    const month = monthPicker.month === 1 ? 12 : monthPicker.month - 1;
-    const year = monthPicker.month === 1 ? monthPicker.year - 1 : monthPicker.year;
+    let month = parseInt(monthPicker.month);
+    let year = parseInt(monthPicker.year);
+    month = monthPicker.month === 1 ? 12 : monthPicker.month - 1;
+    year = monthPicker.month === 1 ? monthPicker.year - 1 : monthPicker.year;
 
-    monthPicker.month = month;
-    monthPicker.year = year;
+    monthPicker.month = this.padNumber(month);
+    monthPicker.year = year.toString();
     this.model.changeMonth({ monthPicker });
   }
 
   onclickNextButton() {
     const { monthPicker } = this.model.getState();
-    const month = monthPicker.month === 12 ? 1 : monthPicker.month + 1;
-    const year = monthPicker.month === 12 ? monthPicker.year + 1 : monthPicker.year;
+    let month = parseInt(monthPicker.month);
+    let year = parseInt(monthPicker.year);
+    month = monthPicker.month === 12 ? 1 : monthPicker.month + 1;
+    year = monthPicker.month === 12 ? monthPicker.year + 1 : monthPicker.year;
 
-    monthPicker.month = month;
-    monthPicker.year = year;
+    monthPicker.month = this.padNumber(month);
+    monthPicker.year = year.toString();
     this.model.changeMonth({ monthPicker });
+  }
+
+  padNumber(month) {
+    month = month < 10 ? month.toString().padStart(2, '0') : month.toString();
+    return month;
   }
 }
 

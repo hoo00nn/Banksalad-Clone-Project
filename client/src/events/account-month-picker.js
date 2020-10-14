@@ -15,13 +15,13 @@ class AccountMonthPickerEvent {
 
   onclickPreviousButton() {
     const { monthPicker } = this.model.getState();
-    let month = parseInt(monthPicker.month);
-    let year = parseInt(monthPicker.year);
-    month = month === 1 ? 12 : month - 1;
-    year = month === 1 ? year - 1 : year;
+    const month = parseInt(monthPicker.month);
+    const year = parseInt(monthPicker.year);
+    const updateYear = month === 1 ? year - 1 : year;
+    const updateMonth = month === 1 ? 12 : month - 1;
 
-    monthPicker.month = this.padNumber(month);
-    monthPicker.year = year.toString();
+    monthPicker.month = this.padNumber(updateMonth);
+    monthPicker.year = updateYear.toString();
     this.model.changeMonth({ monthPicker });
   }
 
@@ -29,11 +29,11 @@ class AccountMonthPickerEvent {
     const { monthPicker } = this.model.getState();
     let month = parseInt(monthPicker.month);
     let year = parseInt(monthPicker.year);
-    month = month === 12 ? 1 : month + 1;
-    year = month === 12 ? year + 1 : year;
+    const updateYear = month === 12 ? year + 1 : year;
+    const updateMonth = month === 12 ? 1 : month + 1;
 
-    monthPicker.month = this.padNumber(month);
-    monthPicker.year = year.toString();
+    monthPicker.month = this.padNumber(updateMonth);
+    monthPicker.year = updateYear.toString();
     this.model.changeMonth({ monthPicker });
   }
 

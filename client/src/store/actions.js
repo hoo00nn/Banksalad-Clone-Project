@@ -37,18 +37,18 @@ export const setTabType = (state, data) => {
   return reducer(state, action);
 };
 
-export const nextMonthPicker = (state, data) => {
+export const setMonth = (state, data) => {
   const action = {
-    type: types.NEXT_MONTH_PICKER,
+    type: types.SET_MONTH,
     payload: data,
   };
 
   return reducer(state, action);
 };
 
-export const previousMonthPicker = (state, data) => {
+export const setType = (state, data) => {
   const action = {
-    type: types.PREVIOUS_MONTH_PICKER,
+    type: types.SET_ACCOUNT_TYPE,
     payload: data,
   };
 

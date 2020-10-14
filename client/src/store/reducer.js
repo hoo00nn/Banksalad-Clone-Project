@@ -23,6 +23,10 @@ const reducer = (state, action) => {
     case types.NEXT_MONTH_PICKER:
       newState = Object.assign({}, state, payload);
       store.setState('monthPicker', newState);
+
+    case types.CHANGE_MONTH:
+      newState = Object.assign({}, state, payload);
+      store.setState(newState);
   }
 };
 

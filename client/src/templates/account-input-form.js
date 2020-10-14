@@ -14,6 +14,14 @@ const getTemplate = ({ accountOption }) => {
     }
   };
 
+  const getPayments = () => {
+    if (!!accountOption.payment) {
+      return accountOption.payment.reduce((acc, cur) => {
+        return acc + `<option value=${cur}>${cur}</option>`;
+      });
+    }
+  };
+
   return `
   <div class="account-option">
     <div class="clear-content">내용 지우기</div>
@@ -38,6 +46,7 @@ const getTemplate = ({ accountOption }) => {
         <span>결제수단</span>
         <select name="결제수단" id="payment" required>
           <option value="" hidden>결제수단</option>
+          ${getPayments()}
         </select>
       </div>
     </div>

@@ -20,13 +20,13 @@ class AccountInputFormEvent {
   onclickIncomeButton(e) {
     const { accountOption } = this.model.getState();
     accountOption.type = INCOME;
-    this.model.changeType(accountOption);
+    this.model.changeType({ accountOption });
   }
 
   onclickExpenseButton(e) {
     const { accountOption } = this.model.getState();
     accountOption.type = EXPENSE;
-    this.model.changeType(accountOption);
+    this.model.changeType({ accountOption });
   }
 }
 

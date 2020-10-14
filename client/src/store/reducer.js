@@ -11,20 +11,18 @@ const reducer = (state, action) => {
     case types.SET_EXPENSE_CATEGORY:
 
     case types.SET_PAYMENTS:
+      newState = Object.assign({}, state, payload);
+      store.setState(newState);
 
     case types.SET_TAB_TYPE:
       newState = Object.assign({}, state, payload);
-      store.setState('accountTab', newState);
-
-    case types.PREVIOUS_MONTH_PICKER:
-      newState = Object.assign({}, state, payload);
-      store.setState('monthPicker', newState);
-
-    case types.NEXT_MONTH_PICKER:
-      newState = Object.assign({}, state, payload);
-      store.setState('monthPicker', newState);
+      store.setState(newState);
 
     case types.CHANGE_MONTH:
+      newState = Object.assign({}, state, payload);
+      store.setState(newState);
+
+    case types.SET_ACCOUNT_TYPE:
       newState = Object.assign({}, state, payload);
       store.setState(newState);
   }

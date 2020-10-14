@@ -1,27 +1,31 @@
-import AccountMonthPicker from '@models/account-month-picker';
-import AccountTab from '@models/account-tab';
-import AccountInputForm from '@models/account-input-form';
-import AccountHeader from '@models/account-header';
+import AccountTabView from '@views/account-tab';
+import AccountMonthPickerView from '@views/account-month-picker';
+import AccountHeaderView from '@views/account-header';
+import AccountInputFormView from '@views/account-input-form';
 
 class AccountBook {
   constructor() {
     this.element = document.createElement('div');
     this.element.className = 'account-book__container';
+
+    this.header = new AccountHeaderView(this.element);
+    this.monthPicker = new AccountMonthPickerView(this.element);
+    this.tab = new AccountTabView(this.element);
+    this.inputForm = new AccountInputFormView(this.element);
+
+    this.monthPicker.model.subscribe('stateChange', this.render.bind(this));
+    this.inputForm.model.subscribe('stateChange', this.render.bind(this));
   }
 
   render() {
     document.body.appendChild(this.element);
-    const header = new AccountHeader(this.element);
-    const monthPicker = new AccountMonthPicker(this.element);
-    const tab = new AccountTab(this.element);
-    const inputForm = new AccountInputForm(this.element);
     this.element.innerHTML = `
     <div class="account-book__container">
-      ${header.getHTML()}
+      ${this.header.render()}
       <section class="main">
-        ${monthPicker.getHTML()}
-        ${tab.getHTML()}
-        ${inputForm.getHTML()}
+        ${this.monthPicker.render()}
+        ${this.tab.render()}
+        ${this.inputForm.render()}
       </section>
     </div>
     `;

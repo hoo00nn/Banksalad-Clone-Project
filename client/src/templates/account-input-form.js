@@ -1,11 +1,26 @@
-const getTemplate = (state) => {
+const [INCOME, EXPENSE] = ['income', 'expense'];
+
+const getTemplate = ({ accountOption }) => {
+  const getCategorys = () => {
+    if (accountOption.type === INCOME) {
+      return accountOption.inComeCategory.reduce((acc, cur) => {
+        return acc + `<option value=${cur}>${cur}</option>`;
+      }, '');
+    }
+    if (accountOption.type === EXPENSE) {
+      return accountOption.expenseCategory.reduce((acc, cur) => {
+        return acc + `<option value=${cur}>${cur}</option>`;
+      }, '');
+    }
+  };
+
   return `
   <div class="account-option">
     <div class="clear-content">내용 지우기</div>
     <div class="option-top">
       <span class="type">분류</span>
-      <span class="income selected">수입</span>
-      <span class="expense">지출</span>
+      <span class="income ${accountOption.type === INCOME ? 'selected' : ''}">수입</span>
+      <span class="expense ${accountOption.type === EXPENSE ? 'selected' : ''}">지출</span>
     </div>
     <div class="option-middle">
       <div class="date">
@@ -16,6 +31,7 @@ const getTemplate = (state) => {
         <span>카테고리</span>
         <select name="카테고리" id="category" required>
           <option value="" hidden>카테고리</option>
+          ${getCategorys()}
         </select>
       </div>
       <div class="payment-type">

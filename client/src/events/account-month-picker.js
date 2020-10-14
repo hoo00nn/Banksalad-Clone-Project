@@ -1,4 +1,5 @@
 import { $ } from '@lib/common';
+import { nextMonthPicker, previousMonthPicker } from '@store/actions';
 
 class AccountMonthPickerEvent {
   constructor(target, state) {
@@ -16,15 +17,17 @@ class AccountMonthPickerEvent {
   }
 
   onclickPreviousButton(e) {
-    this.state.month = this.state.month === 1 ? 12 : this.state.month - 1;
+    const updateMonth = this.state.month === 1 ? 12 : this.state.month - 1;
+    previousMonthPicker(this.state, { month: updateMonth });
     const month = $('.month', this.$eventTarget);
-    month.innerText = this.state.month;
+    month.innerText = updateMonth;
   }
 
   onclickNextButton(e) {
-    this.state.month = this.state.month === 12 ? 1 : this.state.month + 1;
+    const updateMonth = this.state.month === 12 ? 1 : this.state.month + 1;
+    nextMonthPicker(this.state, { month: updateMonth });
     const month = $('.month', this.$eventTarget);
-    month.innerText = this.state.month;
+    month.innerText = updateMonth;
   }
 }
 

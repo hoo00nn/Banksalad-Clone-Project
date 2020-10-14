@@ -5,7 +5,7 @@ import AccountMonthPickerEvent from '@events/account-month-picker';
 class AccountMonthPicker {
   constructor(rootElement) {
     this.element = rootElement;
-    this.state = store.monthPicker;
+    this.state = store.getState('monthPicker');
   }
 
   getHTML() {

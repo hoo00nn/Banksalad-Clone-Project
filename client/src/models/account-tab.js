@@ -5,7 +5,7 @@ import AccountTabEvent from '@events/account-tab';
 class AccountTab {
   constructor(rootElement) {
     this.element = rootElement;
-    this.state = store.accountTab;
+    this.state = store.getState('accountTab');
   }
 
   getHTML() {

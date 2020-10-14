@@ -1,4 +1,7 @@
-import { $, $$ } from '@lib/common';
+import { $$ } from '@lib/common';
+import { setTabType } from '@store/actions';
+
+const [List, Calendar, Statistics] = ['list', 'calendar', 'statistics'];
 
 class AccountTabEvent {
   constructor(target, state) {
@@ -12,6 +15,7 @@ class AccountTabEvent {
 
   clickEvent(e) {
     if (e.target.closest('#list')) {
+      setTabType(this.state, { type: List });
       this.state.type = 'list';
       const option = $$('.option', this.$eventTarget);
       option.forEach((v) => {
@@ -20,6 +24,7 @@ class AccountTabEvent {
       });
     }
     if (e.target.closest('#calendar')) {
+      setTabType(this.state, { type: Calendar });
       this.state.type = 'calendar';
       const option = $$('.option', this.$eventTarget);
       option.forEach((v) => {
@@ -28,7 +33,7 @@ class AccountTabEvent {
       });
     }
     if (e.target.closest('#statistics')) {
-      this.state.type = 'statistics';
+      setTabType(this.state, { type: Statistics });
       const option = $$('.option', this.$eventTarget);
       option.forEach((v) => {
         if (v.getAttribute('id') === this.state.type) return v.classList.add('selected');

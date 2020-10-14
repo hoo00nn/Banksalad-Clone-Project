@@ -17,6 +17,8 @@ const initState = () => {
       payment: null,
       contents: null,
     },
+
+    accountList: {},
   };
 
   const getState = () => {

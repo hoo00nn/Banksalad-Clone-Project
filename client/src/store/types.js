@@ -5,6 +5,7 @@ const types = {
   SET_TAB_TYPE: 'SET_TAB_TYPE',
   SET_MONTH: 'CHANGE_MONTH',
   SET_ACCOUNT_TYPE: 'SET_ACCOUNT_TYPE',
+  SET_ACCOUNT_LIST: 'SET_ACCOUNT_LIST',
 };
 
 export default types;

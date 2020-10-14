@@ -2,6 +2,7 @@ import AccountTabView from '@views/account-tab';
 import AccountMonthPickerView from '@views/account-month-picker';
 import AccountHeaderView from '@views/account-header';
 import AccountInputFormView from '@views/account-input-form';
+import AccountListView from '@views/account-list';
 
 class AccountBook {
   constructor() {
@@ -12,9 +13,11 @@ class AccountBook {
     this.monthPicker = new AccountMonthPickerView(this.element);
     this.tab = new AccountTabView(this.element);
     this.inputForm = new AccountInputFormView(this.element);
+    this.list = new AccountListView(this.element);
 
     this.monthPicker.model.subscribe('stateChange', this.render.bind(this));
     this.inputForm.model.subscribe('stateChange', this.render.bind(this));
+    this.list.model.subscribe('stateChange', this.render.bind(this));
   }
 
   render() {
@@ -26,6 +29,7 @@ class AccountBook {
         ${this.monthPicker.render()}
         ${this.tab.render()}
         ${this.inputForm.render()}
+        ${this.list.render()}
       </section>
     </div>
     `;

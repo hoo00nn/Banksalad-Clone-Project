@@ -6,10 +6,6 @@ const reducer = (state, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case types.SET_INCOME_CATEGORY:
-
-    case types.SET_EXPENSE_CATEGORY:
-
     case types.SET_PAYMENTS:
       newState = Object.assign({}, state, payload);
       store.setState(newState);
@@ -18,11 +14,15 @@ const reducer = (state, action) => {
       newState = Object.assign({}, state, payload);
       store.setState(newState);
 
-    case types.CHANGE_MONTH:
+    case types.SET_MONTH:
       newState = Object.assign({}, state, payload);
       store.setState(newState);
 
     case types.SET_ACCOUNT_TYPE:
+      newState = Object.assign({}, state, payload);
+      store.setState(newState);
+
+    case types.SET_ACCOUNT_LIST:
       newState = Object.assign({}, state, payload);
       store.setState(newState);
   }

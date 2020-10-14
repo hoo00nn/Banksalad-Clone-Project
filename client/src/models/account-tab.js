@@ -1,21 +1,15 @@
+import PubSub from '@lib/pubsub';
 import store from '@store/store';
-import getTemplate from '@templates/account-tab';
-import AccountTabEvent from '@events/account-tab';
 
-class AccountTab {
+class AccountTabModel extends PubSub {
   constructor(rootElement) {
+    super();
     this.element = rootElement;
-    this.state = store.getState('accountTab');
   }
 
-  getHTML() {
-    this.onEvent();
-    return getTemplate();
-  }
-
-  onEvent() {
-    new AccountTabEvent(this.element, this.state).init();
+  getState() {
+    return store.getState();
   }
 }
 
-export default AccountTab;
+export default AccountTabModel;

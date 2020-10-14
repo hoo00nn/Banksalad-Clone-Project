@@ -6,22 +6,16 @@ class PubSub {
 
   subscribe(event, fn) {
     this.events[event] = this.events[event] || [];
-    this.events[event].push = fn;
+    this.events[event].push(fn);
   }
 
   unsubscribe(event, fn) {
     this.events[event] = this.events[event].filter((f) => f !== fn);
   }
 
-  publish(event, data) {
+  publish(event) {
     if (!this.events.hasOwnProperty(event)) return [];
-    return self.events[event].map((fn) => fn(data));
-  }
-
-  setState(action) {
-    const { type, payload } = action;
-    this.state = Object.assign({}, this.state, payload);
-    this.publish(type, payload);
+    return this.events[event].map((fn) => fn());
   }
 }
 

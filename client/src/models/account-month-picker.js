@@ -1,21 +1,22 @@
+import PubSub from '@lib/pubsub';
 import store from '@store/store';
-import getTemplate from '@templates/account-month-picker';
-import AccountMonthPickerEvent from '@events/account-month-picker';
+import { setMonth } from '@store/actions';
 
-class AccountMonthPicker {
+class AccountMonthPickerModel extends PubSub {
   constructor(rootElement) {
+    super();
     this.element = rootElement;
-    this.state = store.getState('monthPicker');
   }
 
-  getHTML() {
-    this.onEvent();
-    return getTemplate(this.state);
+  changeMonth(newState) {
+    const state = this.getState();
+    setMonth(state, newState);
+    this.publish('stateChange', this.getState());
   }
 
-  onEvent() {
-    new AccountMonthPickerEvent(this.element, this.state).init();
+  getState() {
+    return store.getState();
   }
 }
 
-export default AccountMonthPicker;
+export default AccountMonthPickerModel;

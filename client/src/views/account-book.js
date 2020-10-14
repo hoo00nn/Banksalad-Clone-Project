@@ -1,10 +1,30 @@
-import ACCOUNT_VIEW from '@templates/account-book';
+import AccountMonthPicker from '@models/account-month-picker';
+import AccountTab from '@models/account-tab';
+import AccountInputForm from '@models/account-input-form';
+import AccountHeader from '@models/account-header';
 
 class AccountBook {
-  constructor() {}
+  constructor() {
+    this.element = document.createElement('div');
+    this.element.className = 'account-book__container';
+  }
 
   render() {
-    document.body.innerHTML = ACCOUNT_VIEW;
+    document.body.appendChild(this.element);
+    const header = new AccountHeader(this.element);
+    const monthPicker = new AccountMonthPicker(this.element);
+    const tab = new AccountTab(this.element);
+    const inputForm = new AccountInputForm(this.element);
+    this.element.innerHTML = `
+    <div class="account-book__container">
+      ${header.getHTML()}
+      <section class="main">
+        ${monthPicker.getHTML()}
+        ${tab.getHTML()}
+        ${inputForm.getHTML()}
+      </section>
+    </div>
+    `;
   }
 }
 

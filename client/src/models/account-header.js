@@ -1,9 +1,7 @@
-import PubSub from '@lib/pubsub';
 import store from '@store/store';
 
-class AccountTabModel extends PubSub {
+class AccountHeaderModel {
   constructor(rootElement) {
-    super();
     this.element = rootElement;
   }
 
@@ -12,4 +10,4 @@ class AccountTabModel extends PubSub {
   }
 }
 
-export default AccountTabModel;
+export default AccountHeaderModel;

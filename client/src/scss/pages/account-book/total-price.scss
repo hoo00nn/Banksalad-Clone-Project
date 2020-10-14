@@ -1,0 +1,45 @@
+@import '@styles/common/variables.scss';
+
+.account-book__container .main {
+  & > .total-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+
+    & > .income-price {
+      color: $blue--color;
+      font-weight: $semi-bold--font-weight;
+      margin-bottom: 10px;
+
+      & > * {
+        margin: 0 auto;
+        padding-left: 10px;
+      }
+
+      & > input {
+        border: 1px solid black;
+        width: 13px;
+        height: 13px;
+      }
+    }
+
+    & > .expense-price {
+      color: $green--color;
+      font-weight: $semi-bold--font-weight;
+      margin-bottom: 10px;
+
+      & > * {
+        margin: 0 auto;
+        padding-left: 10px;
+      }
+
+      & > input {
+        border: 1px solid black;
+        width: 13px;
+        height: 13px;
+      }
+    }
+  }
+}

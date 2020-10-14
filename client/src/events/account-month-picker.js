@@ -1,9 +1,7 @@
-import { $ } from '@lib/common';
-
 class AccountMonthPickerEvent {
-  constructor(target, state) {
+  constructor(target, model) {
     this.$eventTarget = target;
-    this.state = state;
+    this.model = model;
   }
 
   init() {
@@ -11,20 +9,37 @@ class AccountMonthPickerEvent {
   }
 
   clickEvent(e) {
-    if (e.target.closest('.previous__button')) this.onclickPreviousButton(e);
-    if (e.target.closest('.next__button')) this.onclickNextButton(e);
+    if (e.target.closest('.previous__button')) this.onclickPreviousButton();
+    if (e.target.closest('.next__button')) this.onclickNextButton();
   }
 
-  onclickPreviousButton(e) {
-    this.state.month = this.state.month === 1 ? 12 : this.state.month - 1;
-    const month = $('.month', this.$eventTarget);
-    month.innerText = this.state.month;
+  onclickPreviousButton() {
+    const { monthPicker } = this.model.getState();
+    const month = parseInt(monthPicker.month);
+    const year = parseInt(monthPicker.year);
+    const updateYear = month === 1 ? year - 1 : year;
+    const updateMonth = month === 1 ? 12 : month - 1;
+
+    monthPicker.month = this.padNumber(updateMonth);
+    monthPicker.year = updateYear.toString();
+    this.model.changeMonth({ monthPicker });
   }
 
-  onclickNextButton(e) {
-    this.state.month = this.state.month === 12 ? 1 : this.state.month + 1;
-    const month = $('.month', this.$eventTarget);
-    month.innerText = this.state.month;
+  onclickNextButton() {
+    const { monthPicker } = this.model.getState();
+    let month = parseInt(monthPicker.month);
+    let year = parseInt(monthPicker.year);
+    const updateYear = month === 12 ? year + 1 : year;
+    const updateMonth = month === 12 ? 1 : month + 1;
+
+    monthPicker.month = this.padNumber(updateMonth);
+    monthPicker.year = updateYear.toString();
+    this.model.changeMonth({ monthPicker });
+  }
+
+  padNumber(month) {
+    month = month < 10 ? month.toString().padStart(2, '0') : month.toString();
+    return month;
   }
 }
 

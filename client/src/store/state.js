@@ -18,7 +18,12 @@ const initState = () => {
       contents: null,
     },
 
-    accountList: {},
+    accountList: {
+      date: [],
+      item: [],
+      totalExpense: '',
+      totalIncome: '',
+    },
   };
 
   const getState = () => {

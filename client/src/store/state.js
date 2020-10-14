@@ -20,7 +20,7 @@ const initState = () => {
   };
 
   const getState = () => {
-    const data = Object.assign({}, store);
+    const data = JSON.parse(JSON.stringify(store));
     return data;
   };
 

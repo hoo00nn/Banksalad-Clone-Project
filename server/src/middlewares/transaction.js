@@ -29,7 +29,7 @@ const middlewares = {
   },
 
   getTransactionsByOption: async (req, res) => {
-    const options = req.body;
+    const options = req.query;
     const transactions = await Transaction.getTransactionsByOption(options);
 
     if (!transactions) res.status(400).json({ state: 'fail', message: errorMessage.failSelect });

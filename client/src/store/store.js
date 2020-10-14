@@ -1,5 +1,5 @@
 import initState from '@store/state';
 
-const store = initState;
+const store = initState();
 
 export default store;

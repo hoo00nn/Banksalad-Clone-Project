@@ -1,11 +1,11 @@
 import getTemplate from '@templates/account-header';
 import AccountHeaderEvent from '@events/account-header';
-import AccountHeaderModel from '../models/account-header';
+import accountHeaderModel from '../models/account-header';
 
 class AccountHeaderView {
   constructor(rootElement) {
-    this.model = new AccountHeaderModel();
-    this.element = rootElement;
+    this.model = accountHeaderModel;
+    this.$element = rootElement;
     this.onEvent();
   }
 
@@ -14,7 +14,7 @@ class AccountHeaderView {
   }
 
   onEvent() {
-    new AccountHeaderEvent(this.element, this.model.getState()).init();
+    new AccountHeaderEvent(this.$element, this.model.getState()).init();
   }
 }
 

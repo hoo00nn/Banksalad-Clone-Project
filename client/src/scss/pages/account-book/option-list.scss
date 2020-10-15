@@ -15,9 +15,19 @@
       right: 0;
       font-size: $semi-small--font;
       color: $green--color;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    & > .clear-content:hover {
+      transform: scale(1.05);
+      font-weight: $semi-bold--font-weight;
     }
 
     & > .option-top {
+      display: flex;
+      align-items: center;
       margin-bottom: 15px;
 
       & > span {
@@ -27,19 +37,33 @@
 
       & > .income,
       & > .expense {
-        padding: 3px 30px;
+        padding: 4px 30px;
         background-color: $white--color;
-        border: 1px solid $bright-green--color;
         border-radius: 5px;
         font-size: $small--font;
-        color: $bright-green--color;
+        font-weight: $bold--font-weight;
+        margin-right: 10px;
       }
 
-      & > .income.selected,
+      & > .expense {
+        color: $bright-green--color;
+        border: 1px solid $bright-green--color;
+      }
+
+      & > .income {
+        border: 1px solid $blue--color;
+        color: $blue--color;
+      }
+
       & > .expense.selected {
         background-color: $green--color;
         color: $white--color;
-        border: none;
+      }
+
+      & > .income.selected {
+        background-color: $blue--color;
+        color: $white--color;
+        border-color: $blue--color;
       }
     }
 

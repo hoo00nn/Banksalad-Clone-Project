@@ -23,8 +23,8 @@ const getTemplate = ({ accountOption }) => {
   };
 
   return `
-  <div class="account-option">
-    <div class="clear-content">내용 지우기</div>
+  <form class="account-option">
+    <input type="reset" class="clear-content" value="내용 지우기">
     <div class="option-top">
       <span class="type">분류</span>
       <span class="income ${accountOption.type === INCOME ? 'selected' : ''}">수입</span>
@@ -53,17 +53,17 @@ const getTemplate = ({ accountOption }) => {
     <div class="option-bottom">
       <div class="price">
         <span>금액</span>
-        <input type="text" required />
+        <input type="text" name="price" id="input-price" equired />
       </div>
       <div class="content">
         <span>내용</span>
-        <input type="text" required />
+        <input type="text" name="content" id="input-content" required />
       </div>
     </div>
     <div class="option-button">
       <button>확인</button>
     </div>
-  </div>
+  </form>
   `;
 };
 

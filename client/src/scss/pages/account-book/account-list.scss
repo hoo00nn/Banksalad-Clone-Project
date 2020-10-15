@@ -17,11 +17,22 @@
       & > .header {
         display: flex;
         justify-content: space-between;
-        font-size: $small--font;
+        font-size: $semi-small--font;
         padding: 12px 3px;
         font-weight: $semi-bold--font-weight;
         border-bottom: 1px solid rgba($color: #484848, $alpha: 0.3);
         color: rgba($color: #484848, $alpha: 0.9);
+
+        & > .price-of-day {
+          & > .income {
+            color: $blue--color;
+            margin-right: 15px;
+          }
+
+          & > .expense {
+            color: $green--color;
+          }
+        }
       }
 
       & > .list-container {

@@ -38,6 +38,7 @@ class AccountListModel extends PubSub {
     accountList.item = groupByDate;
     accountList.incomeTotal = parseStringPrice(incomeTotal);
     accountList.expenseTotal = parseStringPrice(expenseTotal);
+    accountList.totalPriceOfDay = this.getTotalPriceOfDay(groupByDate);
 
     setAccountList(state, { accountList });
   }
@@ -65,6 +66,30 @@ class AccountListModel extends PubSub {
     });
 
     return [incomeTotal, expenseTotal];
+  }
+
+  getTotalPriceOfDay(item) {
+    let totalPriceOfDay = {};
+
+    Object.keys(item).forEach((date) => {
+      let income = 0;
+      let expense = 0;
+
+      income = item[date].reduce((acc, cur) => {
+        return acc + (cur.type === INCOME ? parseIntPrice(cur.price) : 0);
+      }, 0);
+
+      expense = item[date].reduce((acc, cur) => {
+        return acc + (cur.type === EXPENSE ? parseIntPrice(cur.price) : 0);
+      }, 0);
+
+      income = parseStringPrice(income);
+      expense = parseStringPrice(expense);
+
+      totalPriceOfDay[date] = { income, expense };
+    });
+
+    return totalPriceOfDay;
   }
 
   changeCheckbox(newState) {

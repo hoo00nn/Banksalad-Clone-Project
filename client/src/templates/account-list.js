@@ -1,3 +1,5 @@
+import { getDayOfWeek } from '@lib/util';
+
 const [INCOME, EXPENSE, ALL, NONE] = ['수입', '지출', 'ALL', 'NONE'];
 
 const getTemplate = (state) => {
@@ -35,13 +37,25 @@ const getAccountList = (state) => {
 
   return list.date.reduce((acc, cur) => {
     const dayOfWeekList = getDayOfWeekList(state, cur);
+    const priceOfDay = list.totalPriceOfDay[cur];
+    const dayOfWeek = getDayOfWeek(cur);
+    const formatDate = cur.split('-').slice(1);
+    const month = parseInt(formatDate[0]);
+    const day = parseInt(formatDate[1]);
 
     return (
       acc +
       `
         <div class="day-of-week">
           <div class="header">
-            <span class="date">${cur}</span>
+            <div class="date">
+            <span>${month}월 ${day}일</span>
+            <span class='day'>${dayOfWeek}</span>
+            </div>
+            <div class="price-of-day">
+              <span class="income">+${priceOfDay.income}원</span>
+              <span class="expense">-${priceOfDay.expense}원</span>
+            </div>
           </div>
           <ul class="list-container">
             ${dayOfWeekList}

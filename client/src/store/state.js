@@ -19,15 +19,15 @@ const initState = () => {
     },
 
     accountType: {
-      income: 'true',
-      expense: 'false',
+      income: true,
+      expense: true,
     },
 
     accountList: {
       date: [],
       item: [],
-      totalExpense: '',
-      totalIncome: '',
+      expenseTotal: '',
+      incomeTotal: '',
     },
   };
 

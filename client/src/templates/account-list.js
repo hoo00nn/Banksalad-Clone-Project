@@ -13,14 +13,18 @@ const getTotalPrice = (state) => {
   return `
     <div class="total-price">
       <div class="income-price">
-        <input type="checkbox" checked=${state.accountType.income === true ? 'checked' : ''}/>
+        <input type="checkbox" class="income-checkbox" ${
+          state.accountType.income === true ? 'checked' : ''
+        }/>
         <span>수입</span>
-        <span id="price">${state.accountList.totalIncome}원</span>
+        <span id="price">${state.accountList.incomeTotal}원</span>
       </div>
       <div class="expense-price">
-        <input type="checkbox" checked=${state.accountType.expense === true ? 'checked' : ''}/>
+        <input type="checkbox" class="expense-checkbox" ${
+          state.accountType.expense === true ? 'checked' : ''
+        }/>
         <span>지출</span>
-        <span id="price">${state.accountList.totalExpense}원</span>
+        <span id="price">${state.accountList.expenseTotal}원</span>
       </div>
     </div>
   `;

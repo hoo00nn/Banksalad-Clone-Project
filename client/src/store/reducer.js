@@ -25,6 +25,9 @@ const reducer = (state, action) => {
     case types.SET_ACCOUNT_LIST:
       newState = Object.assign({}, state, payload);
       store.setState(newState);
+    case types.SET_ACCOUNT_TYPE:
+      newState = Object.assign({}, state, payload);
+      store.setState(newState);
   }
 };
 

@@ -45,3 +45,21 @@ export const setAccountList = (state, data) => {
 
   return reducer(state, action);
 };
+
+export const setAccountType = (state, data) => {
+  const action = {
+    type: types.SET_ACCOUNT_TYPE,
+    payload: data,
+  };
+
+  return reducer(state, action);
+};
+
+export const setAccountOption = (state, data) => {
+  const action = {
+    type: types.SET_ACCOUNT_OPTION,
+    payload: data,
+  };
+
+  return reducer(state, action);
+};

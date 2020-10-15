@@ -5,7 +5,7 @@ import { setMonth } from '@store/actions';
 class AccountMonthPickerModel extends PubSub {
   constructor(rootElement) {
     super();
-    this.element = rootElement;
+    this.$element = rootElement;
   }
 
   changeMonth(newState) {
@@ -19,4 +19,6 @@ class AccountMonthPickerModel extends PubSub {
   }
 }
 
-export default AccountMonthPickerModel;
+const accountMonthPickerModel = new AccountMonthPickerModel();
+
+export default accountMonthPickerModel;

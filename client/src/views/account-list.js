@@ -1,12 +1,19 @@
+import { $ } from '@lib/common';
 import getTemplate from '@templates/account-list';
 import AccountListEvent from '@events/account-list';
-import AccountListModel from '@models/account-list';
+import accountListModel from '@models/account-list';
+import accountMonthPickerModel from '@models/account-month-picker';
+import accountTabModel from '@models/account-tab';
 
 class AccountListView {
   constructor(rootElement) {
-    this.model = new AccountListModel();
-    this.element = rootElement;
+    this.model = accountListModel;
+    this.$element = rootElement;
     this.onEvent();
+
+    accountMonthPickerModel.subscribe('stateChange', this.rerender.bind(this));
+    accountTabModel.subscribe('stateChange', this.rerender.bind(this));
+    this.model.subscribe('stateChange', this.rerender.bind(this));
   }
 
   async render() {
@@ -14,8 +21,20 @@ class AccountListView {
     return getTemplate(this.model.getState());
   }
 
+  async rerender() {
+    await this.model.initState();
+    const $element = $('.account-option');
+    const $totalPirceNode = $('.total-price');
+    const $accountListNode = $('.account-list');
+    const html = getTemplate(this.model.getState());
+
+    $totalPirceNode.remove();
+    $accountListNode.remove();
+    $element.insertAdjacentHTML('afterend', html);
+  }
+
   onEvent() {
-    new AccountListEvent(this.element, this.model).init();
+    new AccountListEvent(this.$element, this.model).init();
   }
 }
 

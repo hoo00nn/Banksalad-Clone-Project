@@ -1,52 +1,110 @@
 import PubSub from '@lib/pubsub';
 import store from '@store/store';
 import { getTransactions } from '@api/transaction-api';
-import { setAccountList } from '@store/actions';
+import { setAccountType, setAccountList, setAccountOption } from '@store/actions';
+import { parseIntPrice, parseStringPrice } from '@lib/util';
 
-const [INCOME, EXPENSE] = ['수입', '지출'];
+const [INCOME, EXPENSE, ALL, NONE] = ['수입', '지출', 'ALL', 'NONE'];
 
 class AccountListModel extends PubSub {
   constructor(rootElement) {
     super();
-    this.element = rootElement;
+    this.$element = rootElement;
   }
 
   async initState() {
     const state = this.getState();
     const options = { date: `${state.monthPicker.year}-${state.monthPicker.month}` };
     const transactions = await getTransactions(options);
+    const type = this.getAccountListType();
+    const [incomeTotal, expenseTotal] = this.getTotalPrice(transactions);
     const groupByDate = {};
     const accountList = {};
-    let totalIncome = 0;
-    let totalExpense = 0;
+    let filterItem = [];
 
-    transactions.forEach((data) => {
-      const date = data.date;
+    if (type === NONE) return [];
+    if (type === INCOME) filterItem = transactions.filter((list) => list.type === INCOME);
+    if (type === EXPENSE) filterItem = transactions.filter((list) => list.type === EXPENSE);
+    if (type === ALL) filterItem = transactions;
+
+    filterItem.forEach((data) => {
+      const { date } = data;
+
       groupByDate[date] = groupByDate[date] || [];
       groupByDate[date].push(data);
-      if (data.type === INCOME) totalIncome += this.parseToInt(data.price);
-      if (data.type === EXPENSE) totalExpense += this.parseToInt(data.price);
     });
 
     accountList.date = Object.keys(groupByDate);
     accountList.item = groupByDate;
-    accountList.totalIncome = this.parseToString(totalIncome);
-    accountList.totalExpense = this.parseToString(totalExpense);
+    accountList.incomeTotal = parseStringPrice(incomeTotal);
+    accountList.expenseTotal = parseStringPrice(expenseTotal);
+    accountList.totalPriceOfDay = this.getTotalPriceOfDay(groupByDate);
 
     setAccountList(state, { accountList });
-  }
-
-  parseToInt(price) {
-    return parseInt(price.split(',').join(''));
-  }
-
-  parseToString(price) {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   getState() {
     return store.getState();
   }
+
+  getAccountListType() {
+    const { income, expense } = this.getState().accountType;
+
+    if (income && expense) return ALL;
+    if (income) return INCOME;
+    if (expense) return EXPENSE;
+    return NONE;
+  }
+
+  getTotalPrice(list) {
+    let incomeTotal = 0;
+    let expenseTotal = 0;
+
+    list.forEach((item) => {
+      if (item.type === INCOME) incomeTotal += parseIntPrice(item.price);
+      if (item.type === EXPENSE) expenseTotal += parseIntPrice(item.price);
+    });
+
+    return [incomeTotal, expenseTotal];
+  }
+
+  getTotalPriceOfDay(item) {
+    let totalPriceOfDay = {};
+
+    Object.keys(item).forEach((date) => {
+      let income = 0;
+      let expense = 0;
+
+      income = item[date].reduce((acc, cur) => {
+        return acc + (cur.type === INCOME ? parseIntPrice(cur.price) : 0);
+      }, 0);
+
+      expense = item[date].reduce((acc, cur) => {
+        return acc + (cur.type === EXPENSE ? parseIntPrice(cur.price) : 0);
+      }, 0);
+
+      income = parseStringPrice(income);
+      expense = parseStringPrice(expense);
+
+      totalPriceOfDay[date] = { income, expense };
+    });
+
+    return totalPriceOfDay;
+  }
+
+  changeCheckbox(newState) {
+    const state = this.getState();
+    setAccountType(state, newState);
+    this.publish('stateChange');
+  }
+
+  changeAccountOption(newState) {
+    const state = this.getState();
+    setAccountOption(state, newState);
+    this.publish('stateChange');
+  }
 }
 
-export default AccountListModel;
+const accountListModel = new AccountListModel();
+
+export default accountListModel;

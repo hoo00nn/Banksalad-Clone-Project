@@ -1,45 +1,63 @@
 import { $$ } from '@lib/common';
-import { setTabType } from '@store/actions';
 
-const [List, Calendar, Statistics] = ['list', 'calendar', 'statistics'];
+const [LIST, CALENDAR, STATISTICS] = ['list', 'calendar', 'statistics'];
 
 class AccountTabEvent {
-  constructor(target, state) {
+  constructor(target, model) {
     this.$eventTarget = target;
-    this.state = state;
+    this.model = model;
   }
 
   init() {
-    this.$eventTarget.addEventListener('click', (e) => this.clickEvent(e));
+    this.$eventTarget.addEventListener('click', (e) => this.clickEventHandler(e));
   }
 
-  clickEvent(e) {
-    if (e.target.closest('#list')) {
-      setTabType(this.state, { type: List });
-      this.state.type = 'list';
-      const option = $$('.option', this.$eventTarget);
-      option.forEach((v) => {
-        if (v.getAttribute('id') === this.state.type) return v.classList.add('selected');
-        return v.classList.remove('selected');
-      });
-    }
-    if (e.target.closest('#calendar')) {
-      setTabType(this.state, { type: Calendar });
-      this.state.type = 'calendar';
-      const option = $$('.option', this.$eventTarget);
-      option.forEach((v) => {
-        if (v.getAttribute('id') === this.state.type) return v.classList.add('selected');
-        return v.classList.remove('selected');
-      });
-    }
-    if (e.target.closest('#statistics')) {
-      setTabType(this.state, { type: Statistics });
-      const option = $$('.option', this.$eventTarget);
-      option.forEach((v) => {
-        if (v.getAttribute('id') === this.state.type) return v.classList.add('selected');
-        return v.classList.remove('selected');
-      });
-    }
+  clickEventHandler(e) {
+    if (e.target.closest('#list')) this.onClickListTab(e);
+    if (e.target.closest('#calendar')) this.onClickCalendarTab(e);
+    if (e.target.closest('#statistics')) this.onClickStatisticsTab(e);
+  }
+
+  onClickListTab(e) {
+    const { accountTab } = this.model.getState();
+    const target = $$('.option');
+
+    target.forEach(($el) => {
+      if ($el.getAttribute('id') === LIST) {
+        $el.classList.add('selected');
+        accountTab.type = LIST;
+      } else $el.classList.remove('selected');
+    });
+
+    this.model.changeTabType({ accountTab });
+  }
+
+  onClickCalendarTab(e) {
+    const { accountTab } = this.model.getState();
+    const target = $$('.option');
+
+    target.forEach(($el) => {
+      if ($el.getAttribute('id') === CALENDAR) {
+        $el.classList.add('selected');
+        accountTab.type = CALENDAR;
+      } else $el.classList.remove('selected');
+    });
+
+    this.model.changeTabType({ accountTab });
+  }
+
+  onClickStatisticsTab(e) {
+    const { accountTab } = this.model.getState();
+    const target = $$('.option');
+
+    target.forEach(($el) => {
+      if ($el.getAttribute('id') === STATISTICS) {
+        $el.classList.add('selected');
+        accountTab.type = STATISTICS;
+      } else $el.classList.remove('selected');
+    });
+
+    this.model.changeTabType({ accountTab });
   }
 }
 

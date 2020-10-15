@@ -1,4 +1,4 @@
-import { $ } from '@lib/common';
+import { removeToken } from '@lib/token';
 
 class AccountHeaderEvent {
   constructor(target, state) {
@@ -7,10 +7,17 @@ class AccountHeaderEvent {
   }
 
   init() {
-    this.$eventTarget.addEventListener('click', (e) => this.clickEvent(e));
+    this.$eventTarget.addEventListener('click', (e) => this.clickEventHandler(e));
   }
 
-  clickEvent(e) {}
+  clickEventHandler(e) {
+    if (e.target.closest('#logout-button')) this.onClickLogout(e);
+  }
+
+  onClickLogout(e) {
+    removeToken();
+    window.location.href = '/';
+  }
 }
 
 export default AccountHeaderEvent;

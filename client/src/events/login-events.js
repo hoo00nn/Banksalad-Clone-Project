@@ -18,8 +18,9 @@ class LoginEvent {
     const username = $('#username', e.currentTarget).value;
     const password = $('#password', e.currentTarget).value;
 
-    const path = getPath(e);
     const response = await loginAuth({ username, password });
+    if (!!response) window.location.href = '/';
+    return false;
   }
 }
 

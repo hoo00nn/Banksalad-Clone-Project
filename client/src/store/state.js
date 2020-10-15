@@ -18,6 +18,11 @@ const initState = () => {
       contents: null,
     },
 
+    accountType: {
+      income: 'true',
+      expense: 'false',
+    },
+
     accountList: {
       date: [],
       item: [],

@@ -1,15 +1,21 @@
-const [INCOME, EXPENSE] = ['income', 'expense'];
+const [INCOME, EXPENSE] = ['수입', '지출'];
 
 const getTemplate = ({ accountOption }) => {
   const getCategorys = () => {
     if (accountOption.type === INCOME) {
       return accountOption.inComeCategory.reduce((acc, cur) => {
-        return acc + `<option value=${cur}>${cur}</option>`;
+        const { selectedCategory } = accountOption;
+        return (
+          acc + `<option value=${cur} ${selectedCategory === cur ? 'selected' : ''}>${cur}</option>`
+        );
       }, '');
     }
     if (accountOption.type === EXPENSE) {
       return accountOption.expenseCategory.reduce((acc, cur) => {
-        return acc + `<option value=${cur}>${cur}</option>`;
+        const { selectedCategory } = accountOption;
+        return (
+          acc + `<option value=${cur} ${selectedCategory === cur ? 'selected' : ''}>${cur}</option>`
+        );
       }, '');
     }
   };
@@ -17,11 +23,14 @@ const getTemplate = ({ accountOption }) => {
   const getPayments = () => {
     if (!!accountOption.payment) {
       return accountOption.payment.reduce((acc, cur) => {
-        return acc + `<option value=${cur}>${cur}</option>`;
-      });
+        const { selectedPayment } = accountOption;
+        return (
+          acc + `<option value=${cur} ${selectedPayment === cur ? 'selected' : ''}>${cur}</option>`
+        );
+      }, '');
     }
   };
-
+  console.log(accountOption);
   return `
   <form class="account-option">
     <input type="reset" class="clear-content" value="내용 지우기">
@@ -33,7 +42,8 @@ const getTemplate = ({ accountOption }) => {
     <div class="option-middle">
       <div class="date">
         <span>날짜</span>
-        <input type="date" required />
+        <input type="date" required 
+        ${accountOption.date !== null ? 'value=' + accountOption.date : ''} />
       </div>
       <div class="category">
         <span>카테고리</span>
@@ -53,11 +63,15 @@ const getTemplate = ({ accountOption }) => {
     <div class="option-bottom">
       <div class="price">
         <span>금액</span>
-        <input type="text" name="price" id="input-price" equired />
+        <input type="text" name="price" id="input-price" required
+        ${accountOption.price !== 0 ? 'value=' + accountOption.price : ''}
+        />
       </div>
       <div class="content">
         <span>내용</span>
-        <input type="text" name="content" id="input-content" required />
+        <input type="text" name="content" id="input-content" required
+        ${accountOption.contents !== null ? 'value=' + accountOption.contents : ''}
+        />
       </div>
     </div>
     <div class="option-button">

@@ -1,7 +1,7 @@
 import PubSub from '@lib/pubsub';
 import store from '@store/store';
 import { getTransactions } from '@api/transaction-api';
-import { setAccountType, setAccountList } from '@store/actions';
+import { setAccountType, setAccountList, setAccountOption } from '@store/actions';
 import { parseIntPrice, parseStringPrice } from '@lib/util';
 
 const [INCOME, EXPENSE, ALL, NONE] = ['수입', '지출', 'ALL', 'NONE'];
@@ -95,6 +95,12 @@ class AccountListModel extends PubSub {
   changeCheckbox(newState) {
     const state = this.getState();
     setAccountType(state, newState);
+    this.publish('stateChange');
+  }
+
+  changeAccountOption(newState) {
+    const state = this.getState();
+    setAccountOption(state, newState);
     this.publish('stateChange');
   }
 }

@@ -1,7 +1,7 @@
 import { $ } from '@lib/common';
 import { parseStringPrice, parseIntPrice } from '@lib/util';
 
-const [INCOME, EXPENSE] = ['income', 'expense'];
+const [INCOME, EXPENSE] = ['수입', '지출'];
 
 class AccountInputFormEvent {
   constructor(target, model) {

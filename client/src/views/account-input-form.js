@@ -2,7 +2,8 @@ import { $ } from '@lib/common';
 import getTemplate from '@templates/account-input-form';
 import AccountInputFormEvent from '@events/account-input-form';
 import accountInputFormModel from '@models/account-input-form';
-import accountListTabModel from '@models/account-tab';
+import accountTabModel from '@models/account-tab';
+import accountListModel from '@models/account-list';
 
 class AccountInputFormView {
   constructor(rootElement) {
@@ -11,7 +12,8 @@ class AccountInputFormView {
     this.onEvent();
 
     this.model.subscribe('stateChange', this.rerender.bind(this));
-    accountListTabModel.subscribe('stateChange', this.rerender.bind(this));
+    accountTabModel.subscribe('stateChange', this.rerender.bind(this));
+    accountListModel.subscribe('stateChange', this.rerender.bind(this));
   }
 
   async render() {

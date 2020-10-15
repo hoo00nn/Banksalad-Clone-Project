@@ -54,3 +54,12 @@ export const setAccountType = (state, data) => {
 
   return reducer(state, action);
 };
+
+export const setAccountOption = (state, data) => {
+  const action = {
+    type: types.SET_ACCOUNT_OPTION,
+    payload: data,
+  };
+
+  return reducer(state, action);
+};

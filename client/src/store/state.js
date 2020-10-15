@@ -10,12 +10,16 @@ const initState = () => {
     },
 
     accountOption: {
-      type: 'income',
+      type: '수입',
+      date: null,
       price: 0,
       inComeCategory: ['월급', '용돈', '기타수입'],
       expenseCategory: ['식비', '생활', '쇼핑/뷰티', '교통', '의료/건강', '문화/여가', '미분류'],
       payment: null,
       contents: null,
+      selectedPayment: null,
+      selectedCategory: null,
+      itemNumber: null,
     },
 
     accountType: {

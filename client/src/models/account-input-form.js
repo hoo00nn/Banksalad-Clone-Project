@@ -11,7 +11,7 @@ class AccountInputFormModel extends PubSub {
 
   async initState() {
     let payments = await getPayments();
-    let state = this.getState();
+    const state = this.getState();
     const { accountOption } = this.getState();
     payments = payments.map((v) => v.payment_type);
     accountOption.payment = payments;

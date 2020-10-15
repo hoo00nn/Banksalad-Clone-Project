@@ -77,6 +77,7 @@ const getDayOfWeekList = (state, date) => {
       acc +
       `
         <li class="list">
+          <input type="hidden" value='${JSON.stringify(cur)}'/>
           <span class="category ${type}">${cur.category}</span>
           <span class="content">테스트</span>
           <span class="payment">${cur.payment}</span>

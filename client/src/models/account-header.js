@@ -2,7 +2,7 @@ import store from '@store/store';
 
 class AccountHeaderModel {
   constructor(rootElement) {
-    this.element = rootElement;
+    this.$element = rootElement;
   }
 
   getState() {
@@ -10,4 +10,6 @@ class AccountHeaderModel {
   }
 }
 
-export default AccountHeaderModel;
+const accountHeaderModel = new AccountHeaderModel();
+
+export default accountHeaderModel;

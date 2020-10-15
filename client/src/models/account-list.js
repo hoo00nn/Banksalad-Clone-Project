@@ -8,7 +8,7 @@ const [INCOME, EXPENSE] = ['수입', '지출'];
 class AccountListModel extends PubSub {
   constructor(rootElement) {
     super();
-    this.element = rootElement;
+    this.$element = rootElement;
   }
 
   async initState() {
@@ -49,4 +49,6 @@ class AccountListModel extends PubSub {
   }
 }
 
-export default AccountListModel;
+const accountListModel = new AccountListModel();
+
+export default accountListModel;

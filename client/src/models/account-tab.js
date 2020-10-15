@@ -4,7 +4,7 @@ import store from '@store/store';
 class AccountTabModel extends PubSub {
   constructor(rootElement) {
     super();
-    this.element = rootElement;
+    this.$element = rootElement;
   }
 
   getState() {
@@ -12,4 +12,6 @@ class AccountTabModel extends PubSub {
   }
 }
 
-export default AccountTabModel;
+const accountTabModel = new AccountTabModel();
+
+export default accountTabModel;

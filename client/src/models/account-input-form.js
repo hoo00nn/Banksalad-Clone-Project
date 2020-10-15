@@ -6,7 +6,7 @@ import { getPayments } from '@api/payment-type-api';
 class AccountInputFormModel extends PubSub {
   constructor(rootElement) {
     super();
-    this.element = rootElement;
+    this.$element = rootElement;
     this.initState();
   }
 
@@ -17,7 +17,6 @@ class AccountInputFormModel extends PubSub {
     payments = payments.map((v) => v.payment_type);
     accountOption.payment = payments;
     setPayments(state, { accountOption });
-    this.publish('stateChange', this.getState());
   }
 
   changeType(newState) {
@@ -31,4 +30,6 @@ class AccountInputFormModel extends PubSub {
   }
 }
 
-export default AccountInputFormModel;
+const accountInpuFormModel = new AccountInputFormModel();
+
+export default accountInpuFormModel;

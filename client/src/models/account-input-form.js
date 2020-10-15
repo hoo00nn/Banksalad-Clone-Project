@@ -7,7 +7,6 @@ class AccountInputFormModel extends PubSub {
   constructor(rootElement) {
     super();
     this.$element = rootElement;
-    this.initState();
   }
 
   async initState() {

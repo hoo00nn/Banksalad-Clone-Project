@@ -12,7 +12,8 @@ class AccountInputFormView {
     this.model.subscribe('stateChange', this.rerender.bind(this));
   }
 
-  render() {
+  async render() {
+    await this.model.initState();
     return getTemplate(this.model.getState());
   }
 

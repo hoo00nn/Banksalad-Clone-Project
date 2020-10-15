@@ -24,7 +24,7 @@ class AccountBook {
       <section class="main">
         ${this.monthPicker.render()}
         ${this.tab.render()}
-        ${this.inputForm.render()}
+        ${await this.inputForm.render()}
         ${await this.list.render()}
       </section>
     </div>

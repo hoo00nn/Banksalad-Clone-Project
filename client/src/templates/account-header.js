@@ -6,7 +6,7 @@ const getTemplate = () => {
     </div>
     <div class="header-option">
       <span>결제 수단 관리</span>
-      <span>로그아웃</span>
+      <span id="logout-button">로그아웃</span>
     </div>
   </div>
   `;

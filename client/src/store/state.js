@@ -1,3 +1,5 @@
+import { getDate } from '@lib/util';
+
 const initState = () => {
   let store = {
     monthPicker: {
@@ -11,7 +13,7 @@ const initState = () => {
 
     accountOption: {
       type: '수입',
-      date: null,
+      date: getDate(),
       price: 0,
       inComeCategory: ['월급', '용돈', '기타수입'],
       expenseCategory: ['식비', '생활', '쇼핑/뷰티', '교통', '의료/건강', '문화/여가', '미분류'],

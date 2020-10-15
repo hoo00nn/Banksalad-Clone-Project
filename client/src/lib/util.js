@@ -11,3 +11,14 @@ export const getDayOfWeek = (date) => {
   const dayOfWeek = week[new Date(date).getDay()];
   return dayOfWeek;
 };
+
+export const getDate = () => {
+  const year = new Date().getFullYear();
+  let month = new Date().getMonth() + 1;
+  let day = new Date().getDate();
+
+  month = month < 10 ? `0${momth}` : `${month}`;
+  day = day < 10 ? `0${day}` : `${day}`;
+
+  return `${year}-${month}-${day}`;
+};

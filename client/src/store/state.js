@@ -22,6 +22,7 @@ const initState = () => {
       selectedPayment: null,
       selectedCategory: null,
       itemNumber: null,
+      clicked: false,
     },
 
     accountType: {

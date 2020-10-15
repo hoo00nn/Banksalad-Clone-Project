@@ -9,7 +9,8 @@
     margin: 15px auto;
     font-weight: $semi-bold--font-weight;
 
-    & > .clear-content {
+    & > .clear-content,
+    & > .delete-button {
       position: absolute;
       top: 0;
       right: 0;
@@ -18,6 +19,7 @@
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
+      background-color: inherit;
     }
 
     & > .clear-content:hover {

@@ -32,6 +32,7 @@ class AccountListEvent {
     accountOption.selectedCategory = listData.category;
     accountOption.price = listData.price;
     accountOption.contents = listData.content;
+    accountOption.clicked = true;
 
     this.model.changeAccountOption({ accountOption });
   }

@@ -30,10 +30,14 @@ const getTemplate = ({ accountOption }) => {
       }, '');
     }
   };
-  console.log(accountOption);
+
   return `
   <form class="account-option">
-    <input type="reset" class="clear-content" value="내용 지우기">
+    ${
+      accountOption.clicked !== true
+        ? `<input type="reset" class="clear-content" value="내용 지우기">`
+        : `<button class="delete-button">삭제</button>`
+    }
     <div class="option-top">
       <span class="type">분류</span>
       <span class="income ${accountOption.type === INCOME ? 'selected' : ''}">수입</span>

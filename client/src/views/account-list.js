@@ -3,7 +3,7 @@ import getTemplate from '@templates/account-list';
 import AccountListEvent from '@events/account-list';
 import accountListModel from '@models/account-list';
 import accountMonthPickerModel from '@models/account-month-picker';
-import accountListTabModel from '@models/account-list-tab';
+import accountListTabModel from '@models/account-tab';
 
 class AccountListView {
   constructor(rootElement) {

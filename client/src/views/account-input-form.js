@@ -2,7 +2,7 @@ import { $ } from '@lib/common';
 import getTemplate from '@templates/account-input-form';
 import AccountInputFormEvent from '@events/account-input-form';
 import accountInputFormModel from '@models/account-input-form';
-import accountListTabModel from '@models/account-list-tab';
+import accountListTabModel from '@models/account-tab';
 
 class AccountInputFormView {
   constructor(rootElement) {

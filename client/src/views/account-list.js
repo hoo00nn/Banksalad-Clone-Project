@@ -3,6 +3,7 @@ import getTemplate from '@templates/account-list';
 import AccountListEvent from '@events/account-list';
 import accountListModel from '@models/account-list';
 import accountMonthPickerModel from '@models/account-month-picker';
+import accountListTabModel from '@models/account-list-tab';
 
 class AccountListView {
   constructor(rootElement) {
@@ -11,6 +12,7 @@ class AccountListView {
     this.onEvent();
 
     accountMonthPickerModel.subscribe('stateChange', this.rerender.bind(this));
+    accountListTabModel.subscribe('stateChange', this.rerender.bind(this));
     this.model.subscribe('stateChange', this.rerender.bind(this));
   }
 

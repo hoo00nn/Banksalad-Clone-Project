@@ -95,7 +95,6 @@ class AccountListModel extends PubSub {
   changeCheckbox(newState) {
     const state = this.getState();
     setAccountType(state, newState);
-    console.log(this.getState());
     this.publish('stateChange');
   }
 }

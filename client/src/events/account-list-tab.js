@@ -3,7 +3,7 @@ import { setTabType } from '@store/actions';
 
 const [List, Calendar, Statistics] = ['list', 'calendar', 'statistics'];
 
-class AccountTabEvent {
+class AccountListTabEvent {
   constructor(target, state) {
     this.$eventTarget = target;
     this.state = state;
@@ -43,4 +43,4 @@ class AccountTabEvent {
   }
 }
 
-export default AccountTabEvent;
+export default AccountListTabEvent;

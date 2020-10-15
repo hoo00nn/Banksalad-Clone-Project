@@ -1,4 +1,4 @@
-import AccountTabView from '@views/account-tab';
+import AccountListTabView from '@views/account-list-tab';
 import AccountMonthPickerView from '@views/account-month-picker';
 import AccountHeaderView from '@views/account-header';
 import AccountInputFormView from '@views/account-input-form';
@@ -11,7 +11,7 @@ class AccountBook {
 
     this.header = new AccountHeaderView(this.$element);
     this.monthPicker = new AccountMonthPickerView(this.$element);
-    this.tab = new AccountTabView(this.$element);
+    this.tab = new AccountListTabView(this.$element);
     this.inputForm = new AccountInputFormView(this.$element);
     this.list = new AccountListView(this.$element);
   }

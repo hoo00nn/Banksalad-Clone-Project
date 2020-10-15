@@ -1,7 +1,7 @@
 import PubSub from '@lib/pubsub';
 import store from '@store/store';
 
-class AccountTabModel extends PubSub {
+class AccountListTabModel extends PubSub {
   constructor(rootElement) {
     super();
     this.$element = rootElement;
@@ -12,6 +12,6 @@ class AccountTabModel extends PubSub {
   }
 }
 
-const accountTabModel = new AccountTabModel();
+const accountListTabModel = new AccountListTabModel();
 
-export default accountTabModel;
+export default accountListTabModel;

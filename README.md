@@ -48,6 +48,10 @@
 
 ## Demo
 
+- http://101.101.216.75/
+
+![image](https://user-images.githubusercontent.com/52775389/96204009-3138fd80-0f9e-11eb-8a36-1dd12d65e625.png)
+
 ## DB Scheme
 
 ![image](https://user-images.githubusercontent.com/52775389/95408155-d4b05f80-0959-11eb-9199-57cdd64928b7.png)
@@ -57,12 +61,15 @@
 ```bash
 cd server
 npm install
+
+cd client
+npm start
 ```
 
 ### Webpack Build
 
 ```bash
-
+npm run build
 ```
 
 ### Start

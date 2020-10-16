@@ -8,45 +8,126 @@
 
 ```json
   📦server
-  ┣ 📂config
-  ┃ ┗ 📜config.js
-  ┣ 📂src
-  ┃ ┣ 📂dummy
-  ┃ ┃ ┣ 📜createData.js
-  ┃ ┃ ┗ 📜dummyData.csv
-  ┃ ┣ 📂middlewares
-  ┃ ┃ ┣ 📜auth.js
-  ┃ ┃ ┣ 📜category.js
-  ┃ ┃ ┣ 📜passport.js
-  ┃ ┃ ┣ 📜payment.js
-  ┃ ┃ ┣ 📜transaction.js
-  ┃ ┃ ┗ 📜user.js
-  ┃ ┣ 📂models
-  ┃ ┃ ┣ 📜code.js
-  ┃ ┃ ┣ 📜index.js
-  ┃ ┃ ┣ 📜payment.js
-  ┃ ┃ ┣ 📜transaction.js
-  ┃ ┃ ┗ 📜user.js
-  ┃ ┣ 📂routes
-  ┃ ┃ ┣ 📂api
-  ┃ ┃ ┃ ┣ 📜category.js
-  ┃ ┃ ┃ ┣ 📜login.js
-  ┃ ┃ ┃ ┣ 📜payment.js
-  ┃ ┃ ┃ ┣ 📜transaction.js
-  ┃ ┃ ┃ ┗ 📜user.js
-  ┃ ┃ ┗ 📜api.js
-  ┃ ┣ 📂util
-  ┃ ┃ ┣ 📜bcrypt.js
-  ┃ ┃ ┗ 📜server-message.js
-  ┃ ┗ 📜app.js
-  ┣ 📜.env
-  ┣ 📜.eslintrc.js
-  ┣ 📜.prettierrc
-  ┣ 📜package-lock.json
-  ┗ 📜package.json
+ ┣  📂config
+ ┃  ┗  📜config.js
+ ┣  📂src
+ ┃  ┣  📂dummy
+ ┃  ┃  ┣  📜createData.js
+ ┃  ┃  ┗  📜dummyData.csv
+ ┃  ┣  📂middlewares
+ ┃  ┃  ┣  📜auth.js
+ ┃  ┃  ┣  📜category.js
+ ┃  ┃  ┣  📜passport.js
+ ┃  ┃  ┣  📜payment.js
+ ┃  ┃  ┣  📜transaction.js
+ ┃  ┃  ┗  📜user.js
+ ┃  ┣  📂models
+ ┃  ┃  ┣  📜code.js
+ ┃  ┃  ┣  📜index.js
+ ┃  ┃  ┣  📜payment.js
+ ┃  ┃  ┣  📜transaction.js
+ ┃  ┃  ┗  📜user.js
+ ┃  ┣  📂routes
+ ┃  ┃  ┣ 📂api
+ ┃  ┃  ┃ ┣  📜category.js
+ ┃  ┃  ┃ ┣  📜login.js
+ ┃  ┃  ┃ ┣  📜payment.js
+ ┃  ┃  ┃ ┣  📜transaction.js
+ ┃  ┃  ┃ ┗  📜user.js
+ ┃  ┃  ┗  📜api.js
+ ┃  ┣  📂util
+ ┃  ┃  ┣  📜bcrypt.js
+ ┃  ┃  ┗  📜server-message.js
+ ┃  ┗  📜app.js
+ ┣  📜.env
+ ┣  📜.eslintrc.js
+ ┣  📜.prettierrc
+ ┣  📜package-lock.json
+ ┗  📜package.json
+```
+
+```
+📦client
+ ┣  📂src
+ ┃  ┣  📂api
+ ┃  ┃  ┣  📜category-api.js
+ ┃  ┃  ┣  📜login-api.js
+ ┃  ┃  ┣  📜payment-type-api.js
+ ┃  ┃  ┗  📜transaction-api.js
+ ┃  ┣  📂events
+ ┃  ┃  ┣  📜account-header.js
+ ┃  ┃  ┣  📜account-input-form.js
+ ┃  ┃  ┣  📜account-list.js
+ ┃  ┃  ┣  📜account-month-picker.js
+ ┃  ┃  ┣  📜account-tab.js
+ ┃  ┃  ┗  📜login-events.js
+ ┃  ┣  📂lib
+ ┃  ┃  ┣  📜axios-config.js
+ ┃  ┃  ┣  📜common.js
+ ┃  ┃  ┣  📜pubsub.js
+ ┃  ┃  ┣  📜token.js
+ ┃  ┃  ┗  📜util.js
+ ┃  ┣  📂models
+ ┃  ┃  ┣  📜account-header.js
+ ┃  ┃  ┣  📜account-input-form.js
+ ┃  ┃  ┣  📜account-list.js
+ ┃  ┃  ┣  📜account-month-picker.js
+ ┃  ┃  ┗  📜account-tab.js
+ ┃  ┣  📂scss
+ ┃  ┃  ┣  📂common
+ ┃  ┃  ┃  ┣  📜reset.scss
+ ┃  ┃  ┃  ┗  📜variables.scss
+ ┃  ┃  ┣  📂components
+ ┃  ┃  ┃  ┗  📜button.scss
+ ┃  ┃  ┣  📂pages
+ ┃  ┃  ┃  ┣  📂account-book
+ ┃  ┃  ┃  ┃  ┣  📜account-list.scss
+ ┃  ┃  ┃  ┃  ┣  📜header.scss
+ ┃  ┃  ┃  ┃  ┣  📜index.scss
+ ┃  ┃  ┃  ┃  ┣  📜month-picker.scss
+ ┃  ┃  ┃  ┃  ┣  📜option-list.scss
+ ┃  ┃  ┃  ┃  ┣  📜tab.scss
+ ┃  ┃  ┃  ┃  ┗  📜total-price.scss
+ ┃  ┃  ┃  ┗  📜login.scss
+ ┃  ┃  ┗  📜index.scss
+ ┃  ┣  📂store
+ ┃  ┃  ┣  📜actions.js
+ ┃  ┃  ┣  📜reducer.js
+ ┃  ┃  ┣  📜state.js
+ ┃  ┃  ┣  📜store.js
+ ┃  ┃  ┗  📜types.js
+ ┃  ┣  📂templates
+ ┃  ┃  ┣  📜account-book.js
+ ┃  ┃  ┣  📜account-header.js
+ ┃  ┃  ┣  📜account-input-form.js
+ ┃  ┃  ┣  📜account-list.js
+ ┃  ┃  ┣  📜account-month-picker.js
+ ┃  ┃  ┣  📜account-tab.js
+ ┃  ┃  ┗  📜login.js
+ ┃  ┣  📂views
+ ┃  ┃  ┣  📜account-book.js
+ ┃  ┃  ┣  📜account-header.js
+ ┃  ┃  ┣  📜account-input-form.js
+ ┃  ┃  ┣  📜account-list.js
+ ┃  ┃  ┣  📜account-month-picker.js
+ ┃  ┃  ┣  📜account-tab.js
+ ┃  ┃  ┗  📜login.js
+ ┃  ┣  📜index.html
+ ┃  ┗  📜index.js
+ ┣  📜.eslintrc.js
+ ┣  📜.prettierrc
+ ┣  📜babel.config.js
+ ┣  📜banner.js
+ ┣  📜package-lock.json
+ ┣  📜package.json
+ ┗  📜webpack.config.js
 ```
 
 ## Demo
+
+- http://101.101.216.75/
+
+![image](https://user-images.githubusercontent.com/52775389/96204009-3138fd80-0f9e-11eb-8a36-1dd12d65e625.png)
 
 ## DB Scheme
 
@@ -57,12 +138,15 @@
 ```bash
 cd server
 npm install
+
+cd client
+npm start
 ```
 
 ### Webpack Build
 
 ```bash
-
+npm run build
 ```
 
 ### Start
